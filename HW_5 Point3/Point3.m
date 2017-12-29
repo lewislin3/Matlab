@@ -10,9 +10,9 @@ classdef Point3
         function obj=Point3(a,b,c)
             
             if nargin == 0
-                x=0;
-                y=0;
-                z=0;
+                obj.x=0;
+                obj.y=0;
+                obj.z=0;
             else
                 
                 obj(1,numel(a)) = Point3;
@@ -50,11 +50,163 @@ classdef Point3
             
         end
         
-        function a=plus(x,y)
+        function obj=plus(A,B)
+            if size(A)==[1,1]
+                a=0;
+                b=0;
+                c=0;
+               
+                for ii = 1:numel(B)
+                    a(ii)=B(ii).x+A.x;
+                    b(ii)=B(ii).y+A.y;
+                    c(ii)=B(ii).z+A.z;
+                end
+                a = reshape(a, size(B));
+                b = reshape(b, size(B));
+                c = reshape(c, size(B));
+
+                obj=Point3(a,b,c);
+
+                
+                
+                
+            elseif size(B)==[1,1]
+                a=0;
+                b=0;
+                c=0;
+               
+                for ii = 1:numel(A)
+                    a(ii)=A(ii).x+B.x;
+                    b(ii)=A(ii).y+B.y;
+                    c(ii)=A(ii).z+B.z;
+                end
+                a = reshape(a, size(A));
+                b = reshape(b, size(A));
+                c = reshape(c, size(A));
+
+                obj=Point3(a,b,c);
+              
+                
+            else
+                a=0;
+                b=0;
+                c=0;
+               
+                for ii = 1:numel(A)
+                    a(ii)=A(ii).x+B(ii).x;
+                    b(ii)=A(ii).y+B(ii).y;
+                    c(ii)=A(ii).z+B(ii).z;
+                end
+                a = reshape(a, size(A));
+                b = reshape(b, size(A));
+                c = reshape(c, size(A));
+
+                obj=Point3(a,b,c);
+                
+            end
+            
+            
         end
         
         function a=minus(x,y)
+            if size(A)==[1,1]
+                a=0;
+                b=0;
+                c=0;
+               
+                for ii = 1:numel(B)
+                    a(ii)=B(ii).x-A.x;
+                    b(ii)=B(ii).y-A.y;
+                    c(ii)=B(ii).z-A.z;
+                end
+                a = reshape(a, size(B));
+                b = reshape(b, size(B));
+                c = reshape(c, size(B));
+
+                obj=Point3(a,b,c);
+
+                
+                
+                
+            elseif size(B)==[1,1]
+                a=0;
+                b=0;
+                c=0;
+               
+                for ii = 1:numel(A)
+                    a(ii)=A(ii).x-B.x;
+                    b(ii)=A(ii).y-B.y;
+                    c(ii)=A(ii).z-B.z;
+                end
+                a = reshape(a, size(A));
+                b = reshape(b, size(A));
+                c = reshape(c, size(A));
+
+                obj=Point3(a,b,c);
+              
+                
+            else
+                a=0;
+                b=0;
+                c=0;
+               
+                for ii = 1:numel(A)
+                    a(ii)=A(ii).x-B(ii).x;
+                    b(ii)=A(ii).y-B(ii).y;
+                    c(ii)=A(ii).z-B(ii).z;
+                end
+                a = reshape(a, size(A));
+                b = reshape(b, size(A));
+                c = reshape(c, size(A));
+
+                obj=Point3(a,b,c);
+                
+            end
         end
+        
+        function ans=eq(A,B)
+            ans = 1;
+            if size(A)==[1,1]
+                for ii = 1:numel(B)
+                    if A.x ~= B(ii).x
+                        ans = 0;
+                    end
+                    if A.y ~= B(ii).y
+                        ans = 0;
+                    end
+                    if A.z ~= B(ii).z
+                        ans = 0;
+                    end
+                end
+            elseif size(B)==[1,1]
+                for ii = 1:numel(A)
+                    if B.x ~= A(ii).x
+                        ans = 0;
+                    end
+                    if B.y ~= A(ii).y
+                        ans = 0;
+                    end
+                    if B.z ~= A(ii).z
+                        ans = 0;
+                    end
+                end
+            else
+                for ii = 1:numel(A)
+                    if B(ii).x ~= A(ii).x
+                        ans = 0;
+                    end
+                    if B(ii).y ~= A(ii).y
+                        ans = 0;
+                    end
+                    if B(ii).z ~= A(ii).z
+                        ans = 0;
+                    end
+                end
+            end
+         
+        end
+        
+        function
         
     end
     
