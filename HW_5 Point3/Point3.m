@@ -205,8 +205,74 @@ classdef Point3
             end
          
         end
+        function ans=sum(A,num)
+            if nargin==1
+                a=0;
+                b=0;
+                c=0;
+                for ii = 1:numel(A)
+                    a=a+A(ii).x;
+                    b=b+A(ii).y;
+                    c=c+A(ii).z;
+                end
+                ans=Point3(a,b,c);
+            end
+            if nargin==2
+                
+                a=0;
+                b=0;
+                c=0;
+                for ii = 1:numel(A)
+                    a(ii)=A(ii).x;
+                    b(ii)=A(ii).y;
+                    c(ii)=A(ii).z;
+                end
+                a = reshape(a, size(A));
+                b = reshape(b, size(A));
+                c = reshape(c, size(A));
+                a = sum(a,num);
+                b = sum(b,num);
+                c = sum(c,num);
+                ans=Point3(a,b,c);
+                
+            end
+        end
         
-        function
+        function ans=mean(A,num)
+            if nargin==1
+                a=0;
+                b=0;
+                c=0;
+                for ii = 1:numel(A)
+                    a=a+A(ii).x;
+                    b=b+A(ii).y;
+                    c=c+A(ii).z;
+                end
+                a=a/numel(A);
+                b=b/numel(A);
+                c=c/numel(A);
+                ans=Point3(a,b,c);
+            end
+            if nargin==2
+                a=0;
+                b=0;
+                c=0;
+                for ii = 1:numel(A)
+                    a(ii)=A(ii).x;
+                    b(ii)=A(ii).y;
+                    c(ii)=A(ii).z;
+                end
+                a = reshape(a, size(A));
+                b = reshape(b, size(A));
+                c = reshape(c, size(A));
+                a = mean(a,num);
+                b = mean(b,num);
+                c = mean(c,num);
+                ans=Point3(a,b,c);
+            end
+        end
+        
+        
         
     end
     
