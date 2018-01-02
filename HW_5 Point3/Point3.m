@@ -167,41 +167,52 @@ classdef Point3
         function ans=eq(A,B)
             ans = 1;
             if size(A)==[1,1]
+                
                 for ii = 1:numel(B)
                     if A.x ~= B(ii).x
-                        ans = 0;
-                    end
-                    if A.y ~= B(ii).y
-                        ans = 0;
-                    end
-                    if A.z ~= B(ii).z
-                        ans = 0;
+                        ans(ii) = 0;
+                    
+                    elseif A.y ~= B(ii).y
+                        ans(ii) = 0;
+                    
+                    elseif A.z ~= B(ii).z
+                        ans(ii) = 0;
+                    else
+                        ans(ii) = 1;
                     end
                 end
+                ans=reshape(ans,size(B));
             elseif size(B)==[1,1]
                 for ii = 1:numel(A)
                     if B.x ~= A(ii).x
-                        ans = 0;
-                    end
-                    if B.y ~= A(ii).y
-                        ans = 0;
-                    end
-                    if B.z ~= A(ii).z
-                        ans = 0;
+                        ans(ii) = 0;
+                    
+                    elseif B.y ~= A(ii).y
+                        ans(ii) = 0;
+                    
+                    elseif B.z ~= A(ii).z
+                        ans(ii) = 0;
+                    else
+                        ans(ii) = 1;
                     end
                 end
+                ans=reshape(ans,size(A));
             else
+                
                 for ii = 1:numel(A)
                     if B(ii).x ~= A(ii).x
-                        ans = 0;
-                    end
-                    if B(ii).y ~= A(ii).y
-                        ans = 0;
-                    end
-                    if B(ii).z ~= A(ii).z
-                        ans = 0;
+                        ans(ii) = 0;
+                    
+                    elseif B(ii).y ~= A(ii).y
+                        ans(ii) = 0;
+                    
+                    elseif B(ii).z ~= A(ii).z
+                        ans(ii) = 0;
+                    else
+                        ans(ii) = 1;
                     end
                 end
+                ans=reshape(ans,size(A));
             end
          
         end
